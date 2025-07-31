@@ -1,10 +1,9 @@
 import React from 'react';
-import './LoadingPage.css'; // ⬅️ Import animasi kustom shine
 
 const LoadingPage = ({ isFading }) => {
   return (
     <div
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0B1C47] transition-opacity duration-700 ease-out ${
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-white transition-opacity duration-700 ease-out ${
         isFading ? 'opacity-0' : 'opacity-100'
       }`}
     >
