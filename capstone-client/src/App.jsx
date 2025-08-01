@@ -11,7 +11,7 @@ import InboxMessages from './pages/Inboxmesseges';
 import Settings from './pages/Settings';
 import LoadingPage from './pages/Loadingpages';
 import Dashboard from './pages/Dashboard';
-import MyProjects from './pages/Myproject'; // Import halaman Dashboard
+import Myprojects from './pages/Myprojects';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,29 +20,30 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Hanya tampilkan loading screen saat pertama kali membuka web
+    // Jalankan loading hanya saat di path "/"
     if (location.pathname === '/') {
-        const timer = setTimeout(() => {
-            setIsFading(true); // Mulai fade out
-            setTimeout(() => {
-                setIsLoading(false);
-                navigate('/dashboard'); // Arahkan ke dashboard setelah loading
-            }, 700); // Hapus setelah fade
-        }, 2000); // Durasi sebelum fading
+      const timer = setTimeout(() => {
+        setIsFading(true); // Efek fading
+        setTimeout(() => {
+          setIsLoading(false);
+          navigate('/landing'); // ⬅️ arahkan ke "/landing" (huruf kecil semua)
+        }, 700);
+      }, 2000);
 
-        return () => clearTimeout(timer);
+      return () => clearTimeout(timer);
     } else {
-        setIsLoading(false);
+      setIsLoading(false);
     }
-  }, []); // Hanya dijalankan sekali
+  }, [location.pathname, navigate]);
 
+  // Tampilkan loading hanya jika memang di halaman awal "/"
   if (isLoading && location.pathname === '/') {
     return <LoadingPage isFading={isFading} />;
   }
 
   return (
     <Routes>
-      <Route path="/" element={<Landing />} />
+      <Route path="/landing" element={<Landing />} /> {/* Pastikan path ini lowercase */}
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
@@ -52,6 +53,7 @@ function App() {
       <Route path="/inboxmesseges" element={<InboxMessages />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/loading" element={<LoadingPage isFading={false} />} />
+      <Route path="/projects" element={<Myprojects />} />
     </Routes>
   );
 }

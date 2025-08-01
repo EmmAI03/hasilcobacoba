@@ -19,7 +19,7 @@ const Sidebar = ({ isOpen }) => {
 
     const navLinks = [
         { name: 'Dashboard', icon: 'layout', path: '/dashboard' },
-        { name: 'My Projects', icon: 'briefcase', path: '/projects' }, // Contoh path
+        { name: 'My Projects', icon: 'briefcase', path: '/Myprojects' }, // Contoh path
         { name: 'Inbox', icon: 'inbox', path: '/inboxmesseges', notification: 3 },
         { name: 'Bounty Board', icon: 'award', path: '/bountyboard' },
         { name: 'Schedule', icon: 'calendar', path: '/schedule' },
@@ -31,7 +31,7 @@ const Sidebar = ({ isOpen }) => {
                 <div className="p-4 border-b border-slate-200">
                     <Link to="/dashboard" className="flex items-center gap-2">
                         <Icon name="logo" />
-                        <span className="text-2xl font-bold text-slate-800">ProTask</span>
+                        <span className="text-2xl font-bold text-slate-800">Eagle.eye</span>
                     </Link>
                 </div>
 
@@ -39,7 +39,7 @@ const Sidebar = ({ isOpen }) => {
                     <div onClick={() => setProfileOpen(!isProfileOpen)} className="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100 cursor-pointer transition-colors">
                         <img src="https://placehold.co/40x40/a7f3d0/14532d?text=AS" alt="Avatar Pengguna" className="w-10 h-10 rounded-full object-cover" />
                         <div>
-                            <p className="font-semibold text-sm text-slate-700">Andi Setiawan</p>
+                            <p className="font-semibold text-sm text-slate-700">Jonathan Ezra</p>
                             <p className="text-xs text-slate-500">Project Manager</p>
                         </div>
                         <Icon name="chevron-down" className="w-4 h-4 ml-auto text-slate-400" />
