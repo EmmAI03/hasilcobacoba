@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from 'react';
-import Sidebar from '../components/Sidebar'; // Pastikan path komponen ini benar
-import Icon from '../components/Icon'; // Pastikan path komponen ini benar
+import Sidebar from '../components/Sidebar';
+import Icon from '../components/Icon';
 
-// --- DATA DUMMY (diletakkan di luar komponen agar tidak dibuat ulang setiap render) ---
-// Gunakan format YYYY-MM-DD sebagai kunci untuk memudahkan pencarian
+
+// --- Data Jadwal (diletakkan di luar komponen) ---
 const allEvents = {
     '2025-08-01': [{ id: 1, title: 'API Key Issue', color: 'bg-rose-500' }],
     '2025-08-03': [{ id: 2, title: 'Develop Homepage', color: 'bg-amber-500' }],
@@ -29,17 +29,17 @@ const CalendarEvent = ({ event }) => (
 
 const CalendarDay = ({ day, onClick }) => {
     const dayClass = day.isCurrentMonth ? 'text-slate-700' : 'text-slate-400';
-    const todayClass = day.isToday ? 'bg-sky-500 text-white' : '';
+    const todayClass = day.isToday ? 'bg-sky-500 text-white' : 'hover:bg-slate-100';
 
     return (
         <div
-            className="border border-slate-200 h-28 p-2 flex flex-col cursor-pointer hover:bg-slate-100 transition-colors"
-            onClick={() => onClick(day)}
+            className={`border border-slate-200 h-28 p-2 flex flex-col transition-colors ${day.isCurrentMonth ? 'cursor-pointer' : ''}`}
+            onClick={() => day.isCurrentMonth && onClick(day)}
         >
             <span className={`w-7 h-7 flex items-center justify-center rounded-full text-sm font-semibold ${dayClass} ${todayClass}`}>
                 {day.date}
             </span>
-            <div className="mt-1 flex-1 overflow-y-auto">
+            <div className="mt-1 flex-1 overflow-y-auto pr-1">
                 {day.events.map(event => <CalendarEvent key={event.id} event={event} />)}
             </div>
         </div>
@@ -62,7 +62,7 @@ const ScheduleModal = ({ day, onClose }) => {
                 <div className="p-6 border-b border-slate-200">
                     <h3 className="text-lg font-bold text-slate-800">Jadwal untuk {fullDateStr}</h3>
                 </div>
-                <div className="p-6">
+                <div className="p-6 min-h-[100px]">
                     {day.events.length > 0 ? (
                         <ul className="space-y-3">
                             {day.events.map(event => (
@@ -97,11 +97,7 @@ const Schedule = () => {
 
     const toggleSidebar = () => setSidebarOpen(!isSidebarOpen);
     const closeModal = () => setSelectedDay(null);
-    const handleDayClick = (day) => {
-        if (day.isCurrentMonth) {
-            setSelectedDay(day);
-        }
-    };
+    const handleDayClick = (day) => setSelectedDay(day);
 
     const handlePrevMonth = () => {
         setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1));
@@ -110,43 +106,47 @@ const Schedule = () => {
     const handleNextMonth = () => {
         setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1));
     };
+    
+    const handleGoToToday = () => {
+        setCurrentDate(new Date());
+    };
 
     const calendarDays = useMemo(() => {
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth();
+        
         const today = new Date();
+        today.setHours(0, 0, 0, 0);
 
         const firstDayOfMonth = new Date(year, month, 1);
         const lastDayOfMonth = new Date(year, month + 1, 0);
 
         const days = [];
         
-        // Tambahkan hari dari bulan sebelumnya untuk mengisi grid
-        const startDayOfWeek = firstDayOfMonth.getDay(); // 0 = Minggu, 1 = Senin, ...
+        const startDayOfWeek = firstDayOfMonth.getDay();
         const prevMonthLastDay = new Date(year, month, 0).getDate();
         for (let i = startDayOfWeek; i > 0; i--) {
             const date = prevMonthLastDay - i + 1;
-            const fullDate = new Date(year, month -1, date);
+            const fullDate = new Date(year, month - 1, date);
+            fullDate.setHours(0,0,0,0);
             days.push({ date, fullDate, isCurrentMonth: false, isToday: false, events: [] });
         }
 
-        // Tambahkan hari dari bulan ini
         for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
             const fullDate = new Date(year, month, i);
+            fullDate.setHours(0,0,0,0);
             const dateKey = formatDateKey(fullDate);
-            const isToday =
-                fullDate.getDate() === today.getDate() &&
-                fullDate.getMonth() === today.getMonth() &&
-                fullDate.getFullYear() === today.getFullYear();
+            
+            const isToday = fullDate.getTime() === today.getTime();
             
             days.push({ date: i, fullDate, isCurrentMonth: true, isToday, events: allEvents[dateKey] || [] });
         }
         
-        // Tambahkan hari dari bulan berikutnya untuk mengisi grid
-        const endDayOfWeek = lastDayOfMonth.getDay();
-        const remainingDays = 6 - endDayOfWeek;
-        for (let i = 1; i <= remainingDays; i++) {
+        const totalSlots = days.length > 35 ? 42 : 35;
+        const remainingSlots = totalSlots - days.length;
+        for (let i = 1; i <= remainingSlots; i++) {
             const fullDate = new Date(year, month + 1, i);
+            fullDate.setHours(0,0,0,0);
             days.push({ date: i, fullDate, isCurrentMonth: false, isToday: false, events: [] });
         }
 
@@ -156,30 +156,37 @@ const Schedule = () => {
     const daysOfWeek = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
 
     return (
-        <div className="flex h-screen bg-slate-50">
+        <div className="flex h-screen bg-slate-50 font-sans">
             <Sidebar isOpen={isSidebarOpen} />
             <div className="flex-1 flex flex-col overflow-hidden">
-                <header className="bg-white/80 backdrop-blur-sm sticky top-0 z-10 p-4 border-b border-slate-200 flex items-center justify-between">
+                <header className="bg-white/80 backdrop-blur-sm sticky top-0 z-20 p-4 border-b border-slate-200 flex items-center justify-between">
                     <div className="flex items-center gap-4">
                         <button onClick={toggleSidebar} className="lg:hidden p-2 rounded-md hover:bg-slate-200">
                             <Icon name="menu" className="w-6 h-6" />
                         </button>
                         <h1 className="text-2xl font-bold text-slate-800">Schedule</h1>
                     </div>
-                    {/* Tombol Connect Calendar dihapus dari sini */}
+                    <div className="flex items-center gap-2">
+                        <button 
+                            onClick={handleGoToToday} 
+                            className="px-4 py-2 text-sm font-semibold text-slate-600 bg-white border border-slate-300 rounded-lg hover:bg-slate-100 transition-colors"
+                        >
+                            Today
+                        </button>
+                        <button onClick={handlePrevMonth} className="p-2 rounded-full hover:bg-slate-100">
+                           <Icon name="chevron-left" className="w-6 h-6 text-slate-600" />
+                        </button>
+                        <button onClick={handleNextMonth} className="p-2 rounded-full hover:bg-slate-100">
+                           <Icon name="chevron-right" className="w-6 h-6 text-slate-600" />
+                        </button>
+                    </div>
                 </header>
                 <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                        <div className="flex justify-between items-center mb-4">
-                             <button onClick={handlePrevMonth} className="p-2 rounded-full hover:bg-slate-100">
-                                <Icon name="chevron-left" className="w-6 h-6 text-slate-600" />
-                            </button>
-                            <h2 className="text-xl font-bold text-slate-800 w-48 text-center">
+                        <div className="flex justify-center items-center mb-4">
+                            <h2 className="text-xl font-bold text-slate-800 w-48 text-center capitalize">
                                 {currentDate.toLocaleDateString('id-ID', { month: 'long', year: 'numeric' })}
                             </h2>
-                            <button onClick={handleNextMonth} className="p-2 rounded-full hover:bg-slate-100">
-                                <Icon name="chevron-right" className="w-6 h-6 text-slate-600" />
-                            </button>
                         </div>
                         <div className="grid grid-cols-7 text-center font-semibold text-slate-500">
                             {daysOfWeek.map(day => <div key={day} className="py-2">{day}</div>)}

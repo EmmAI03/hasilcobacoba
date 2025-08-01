@@ -1,5 +1,3 @@
-// Salin kode ini ke dalam file Anda: src/pages/MyProjects.jsx
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
