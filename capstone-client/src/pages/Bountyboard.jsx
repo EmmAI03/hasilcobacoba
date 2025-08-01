@@ -1,4 +1,3 @@
-// src/pages/BountyBoard.jsx
 import React, { useState, useMemo } from "react";
 import Sidebar from "../components/Sidebar";
 
