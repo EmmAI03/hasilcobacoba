@@ -10,7 +10,8 @@ import BountyBoard from './pages/BountyBoard';
 import InboxMessages from './pages/Inboxmesseges';
 import Settings from './pages/Settings';
 import LoadingPage from './pages/Loadingpages';
-import Dashboard from './pages/Dashboard'; // Import halaman Dashboard
+import Dashboard from './pages/Dashboard';
+import MyProjects from './pages/Myproject'; // Import halaman Dashboard
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
