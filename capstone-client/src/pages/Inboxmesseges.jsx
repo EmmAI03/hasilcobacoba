@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
-import InboxApp from "../components/InboxApp"; // 👈 pisahkan ke file komponen jika panjang
+import InboxApp from "../components/InboxApp";
 
 const InboxMessages = () => {
   const [activeSidebarItem, setActiveSidebarItem] = useState("Inbox Messages");

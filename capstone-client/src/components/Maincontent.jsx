@@ -5,10 +5,10 @@ import TaskStatusChart from './charts/Taskstatuschart';
 
 const MainContent = ({ onToggleSidebar }) => {
     const recapCards = [
-        { title: 'Tugas Selesai', value: '18', icon: 'check-circle', color: 'sky' },
-        { title: 'Proyek Aktif', value: '4', icon: 'loader', color: 'amber' },
-        { title: 'Deadline Terlewat', value: '2', icon: 'alert-triangle', color: 'rose' },
-        { title: 'Banner Diraih', value: '5', icon: 'award', color: 'emerald' },
+        { title: 'Tasks Completed', value: '18', icon: 'check-circle', color: 'sky' },
+        { title: 'Active Projects', value: '4', icon: 'loader', color: 'amber' },
+        { title: 'Missed Deadlines', value: '2', icon: 'alert-triangle', color: 'rose' },
+        { title: 'Banners Earned', value: '5', icon: 'award', color: 'emerald' },
     ];
 
     return (
@@ -21,14 +21,14 @@ const MainContent = ({ onToggleSidebar }) => {
                     <h1 className="text-2xl font-bold text-slate-800">Dashboard</h1>
                 </div>
                 <div className="flex items-center gap-2 bg-slate-100 p-1 rounded-lg">
-                    <button className="px-3 py-1 text-sm font-semibold text-slate-500 rounded-md hover:bg-white hover:text-sky-600 transition-all">Harian</button>
-                    <button className="px-3 py-1 text-sm font-semibold bg-white text-sky-600 shadow-sm rounded-md transition-all">Bulanan</button>
+                    <button className="px-3 py-1 text-sm font-semibold text-slate-500 rounded-md hover:bg-white hover:text-sky-600 transition-all">Daily</button>
+                    <button className="px-3 py-1 text-sm font-semibold bg-white text-sky-600 shadow-sm rounded-md transition-all">Monthly</button>
                 </div>
             </header>
 
             <div className="p-4 sm:p-6 lg:p-8 space-y-8">
-                {/* ... Konten lainnya sama seperti sebelumnya ... */}
-                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Recap Cards Section */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {recapCards.map(card => (
                         <div key={card.title} className="bg-white p-5 rounded-xl shadow-sm border border-slate-200 flex items-center gap-4">
                             <div className={`bg-${card.color}-100 text-${card.color}-600 p-3 rounded-full`}>
@@ -42,35 +42,37 @@ const MainContent = ({ onToggleSidebar }) => {
                     ))}
                 </div>
 
+                {/* Charts Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div className="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                        <h3 className="text-lg font-semibold mb-4">Tren Produktivitas</h3>
+                        <h3 className="text-lg font-semibold mb-4">Productivity Trends</h3>
                         <div className="h-80"><ProductivityChart /></div>
                     </div>
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                        <h3 className="text-lg font-semibold mb-4">Status Tugas</h3>
+                        <h3 className="text-lg font-semibold mb-4">Task Status</h3>
                         <div className="h-80 flex items-center justify-center"><TaskStatusChart /></div>
                     </div>
                 </div>
 
+                {/* Achievements Section */}
                 <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                     <div className="flex justify-between items-center mb-4">
-                        <h3 className="text-lg font-semibold">Pencapaian & Kontribusi</h3>
-                        <a href="#" className="text-sm font-semibold text-sky-600 hover:underline">Lihat Semua</a>
+                        <h3 className="text-lg font-semibold">Achievements & Contributions</h3>
+                        <a href="#" className="text-sm font-semibold text-sky-600 hover:underline">View All</a>
                     </div>
                     <div className="space-y-4">
                         <div className="bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white p-4 rounded-lg flex items-center gap-4">
                             <Icon name="star" className="w-8 h-8" />
                             <div>
-                                <p className="font-bold">Banner Baru Diraih: "Collaborator King"!</p>
-                                <p className="text-sm opacity-90">Anda menjadi kontributor paling aktif di proyek 'Website Redesign'.</p>
+                                <p className="font-bold">New Banner Earned: "Collaborator King"!</p>
+                                <p className="text-sm opacity-90">You became the most active contributor on the 'Website Redesign' project.</p>
                             </div>
                         </div>
                         <div className="bg-gradient-to-r from-sky-400 to-blue-500 text-white p-4 rounded-lg flex items-center gap-4">
                             <Icon name="file-text" className="w-8 h-8" />
                             <div>
-                                <p className="font-bold">Sertifikat Tersedia: "Top Contributor"</p>
-                                <p className="text-sm opacity-90">Selamat! Anda adalah kontributor terbanyak di proyek 'Q3 Marketing Campaign'. <a href="#" className="font-bold underline">Unduh di sini</a>.</p>
+                                <p className="font-bold">Certificate Available: "Top Contributor"</p>
+                                <p className="text-sm opacity-90">Congratulations! You were the top contributor on the 'Q3 Marketing Campaign' project. <a href="#" className="font-bold underline">Download here</a>.</p>
                             </div>
                         </div>
                     </div>

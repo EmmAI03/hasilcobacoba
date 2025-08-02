@@ -1,38 +1,36 @@
-// Salin kode ini ke dalam file Anda: src/pages/HowToUse.jsx
-
 import React, { useState, useMemo } from 'react';
 import Sidebar from '../components/Sidebar';
 import Icon from '../components/Icon';
 
-// --- Data untuk FAQ ---
+// --- FAQ Data (Translated to English) ---
 const faqData = [
     {
-        question: "Bagaimana cara menavigasi aplikasi?",
-        answer: "Gunakan sidebar di sisi kiri untuk mengakses semua halaman utama seperti Dashboard, My Projects, Bounty Board, Schedule, dan Settings. Halaman yang sedang aktif akan ditandai dengan warna yang lebih cerah."
+        question: "How do I navigate the app?",
+        answer: "Use the sidebar on the left side to access all main pages like Dashboard, My Projects, Bounty Board, Schedule, and Settings. The currently active page will be highlighted with a brighter color."
     },
     {
-        question: "Apa fungsi dari halaman 'My Projects'?",
-        answer: "Halaman 'My Projects' menampilkan semua proyek Anda dalam format Kanban Board. Anda dapat memindahkan proyek antar kolom (To Do, Ongoing, Done, Stuck) dengan fitur drag-and-drop untuk mengelola alur kerja Anda."
+        question: "What is the function of the 'My Projects' page?",
+        answer: "The 'My Projects' page displays all your projects in a Kanban Board format. You can move projects between columns (To Do, Ongoing, Done, Stuck) using drag-and-drop to manage your workflow."
     },
     {
-        question: "Bagaimana cara menggunakan 'Schedule'?",
-        answer: "Halaman 'Schedule' menampilkan kalender bulanan. Anda dapat melihat jadwal dan deadline tugas. Gunakan tombol panah untuk berpindah antar bulan dan tombol 'Today' untuk kembali ke bulan ini. Klik pada tanggal untuk melihat detail jadwal harian."
+        question: "How do I use the 'Schedule' feature?",
+        answer: "The 'Schedule' page shows a monthly calendar. You can view task schedules and deadlines. Use the arrow buttons to switch between months and the 'Today' button to return to the current month. Click a date to view its daily schedule details."
     },
     {
-        question: "Apa itu 'Bounty Board'?",
-        answer: "Bounty Board adalah halaman yang menampilkan daftar semua tugas individual dari seluruh proyek Anda. Halaman ini dirancang untuk membantu Anda fokus pada tugas-tugas yang perlu diselesaikan, dipisahkan antara yang jatuh tempo hari ini dan yang akan datang."
+        question: "What is the 'Bounty Board'?",
+        answer: "The Bounty Board is a page that lists all individual tasks from all your projects. It's designed to help you focus on the tasks that need to be completed, separated by those due today and upcoming ones."
     },
     {
-        question: "Bagaimana cara mengubah tema aplikasi (Light/Dark Mode)?",
-        answer: "Pergi ke halaman 'Settings' melalui sidebar, lalu klik tab 'Tampilan'. Di sana Anda akan menemukan opsi untuk beralih antara tema Light dan Dark. Pilihan Anda akan disimpan secara otomatis di browser."
+        question: "How can I change the app theme (Light/Dark Mode)?",
+        answer: "Go to the 'Settings' page via the sidebar, then click on the 'Appearance' tab. There you’ll find options to switch between Light and Dark themes. Your selection will be saved automatically in the browser."
     },
     {
-        question: "Apakah saya bisa mengubah informasi profil saya?",
-        answer: "Tentu. Di halaman 'Settings', buka tab 'Profil'. Anda dapat mengunggah foto profil baru serta mengubah nama pengguna dan jabatan Anda. Jangan lupa klik 'Simpan Perubahan' setelah selesai."
+        question: "Can I update my profile information?",
+        answer: "Yes, absolutely. In the 'Settings' page, open the 'Profile' tab. You can upload a new profile picture and update your username and job title. Don’t forget to click 'Save Changes' after you're done."
     }
 ];
 
-// --- Komponen Accordion untuk FAQ ---
+// --- Accordion Component ---
 const AccordionItem = ({ item, isOpen, onClick }) => {
     return (
         <div className="border-b border-slate-200">
@@ -51,7 +49,6 @@ const AccordionItem = ({ item, isOpen, onClick }) => {
         </div>
     );
 };
-
 
 const HowToUse = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -88,14 +85,14 @@ const HowToUse = () => {
                 <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
                     <div className="max-w-4xl mx-auto">
                         <div className="text-center mb-12">
-                             <h2 className="text-3xl font-bold text-slate-800 mb-2">Ada yang bisa kami bantu?</h2>
-                             <p className="text-slate-600">Temukan jawaban untuk pertanyaan yang sering diajukan di bawah ini.</p>
+                            <h2 className="text-3xl font-bold text-slate-800 mb-2">Need help with something?</h2>
+                            <p className="text-slate-600">Find answers to frequently asked questions below.</p>
                         </div>
-                        
+
                         <div className="mb-8">
-                             <input
+                            <input
                                 type="text"
-                                placeholder="Cari pertanyaan..."
+                                placeholder="Search a question..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="w-full px-4 py-3 border border-slate-300 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-sky-500"
@@ -113,7 +110,7 @@ const HowToUse = () => {
                                     />
                                 ))
                             ) : (
-                                <p className="text-center text-slate-500 py-8">Tidak ada hasil yang ditemukan untuk pencarian Anda.</p>
+                                <p className="text-center text-slate-500 py-8">No results found for your search.</p>
                             )}
                         </div>
                     </div>
