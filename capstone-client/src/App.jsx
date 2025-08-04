@@ -54,8 +54,7 @@ function App() {
       <Route path="/inboxmesseges" element={<InboxMessages />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/loading" element={<LoadingPage isFading={false} />} />
-      <Route path="/Myprojects" element={<Myprojects />} />
-      <Route path="/profile" element={<Profile />} />
+      <Route path="/myprojects" element={<Myprojects />} />
     </Routes>
   );
 }

@@ -1,39 +1,36 @@
-// Salin kode ini ke dalam file Anda: src/pages/HowToUse.jsx
-
 import React, { useState, useMemo } from 'react';
 import Sidebar from '../components/Sidebar';
 import Icon from '../components/Icon';
 
-// --- Data untuk FAQ ---
+// --- FAQ Data (Translated to English) ---
 const faqData = [
     {
-        question: "How do I navigate the application?",
-        answer: "Use the sidebar on the left to access all main pages like Dashboard, My Projects, Bounty Board, Schedule, and Settings. The currently active page will be highlighted with a brighter color."
+        question: "How do I navigate the app?",
+        answer: "Use the sidebar on the left side to access all main pages like Dashboard, My Projects, Bounty Board, Schedule, and Settings. The currently active page will be highlighted with a brighter color."
     },
     {
-        question: "What is the 'My Projects' page for?",
-        answer: "The 'My Projects' page displays all your projects in a Kanban Board format. You can move projects between columns (To Do, Ongoing, Done, Stuck) with the drag-and-drop feature to manage your workflow."
+        question: "What is the function of the 'My Projects' page?",
+        answer: "The 'My Projects' page displays all your projects in a Kanban Board format. You can move projects between columns (To Do, Ongoing, Done, Stuck) using drag-and-drop to manage your workflow."
     },
     {
-        question: "How do I use the 'Schedule'?",
-        answer: "The 'Schedule' page displays a monthly calendar. You can see schedules and task deadlines. Use the arrow buttons to move between months and the 'Today' button to return to the current month. Click on a date to see the daily schedule details."
+        question: "How do I use the 'Schedule' feature?",
+        answer: "The 'Schedule' page shows a monthly calendar. You can view task schedules and deadlines. Use the arrow buttons to switch between months and the 'Today' button to return to the current month. Click a date to view its daily schedule details."
     },
     {
         question: "What is the 'Bounty Board'?",
-        answer: "The Bounty Board is a page that lists all individual tasks from all your projects. This page is designed to help you focus on tasks that need to be completed, separated between those due today and upcoming ones."
+        answer: "The Bounty Board is a page that lists all individual tasks from all your projects. It's designed to help you focus on the tasks that need to be completed, separated by those due today and upcoming ones."
     },
     {
-        question: "How do I change the application theme (Light/Dark Mode)?",
-        answer: "Go to the 'Settings' page via the sidebar, then click the 'Appearance' tab. There you will find the option to switch between Light and Dark themes. Your choice will be automatically saved in your browser."
+        question: "How can I change the app theme (Light/Dark Mode)?",
+        answer: "Go to the 'Settings' page via the sidebar, then click on the 'Appearance' tab. There you’ll find options to switch between Light and Dark themes. Your selection will be saved automatically in the browser."
     },
     {
-        question: "Can I change my profile information?",
-        answer: "Of course. On the 'Settings' page, open the 'Profile' tab. You can upload a new profile picture and change your username and job title. Don't forget to click 'Save Changes' when you're done."
+        question: "Can I update my profile information?",
+        answer: "Yes, absolutely. In the 'Settings' page, open the 'Profile' tab. You can upload a new profile picture and update your username and job title. Don’t forget to click 'Save Changes' after you're done."
     }
 ];
 
-
-// --- Komponen Accordion untuk FAQ ---
+// --- Accordion Component ---
 const AccordionItem = ({ item, isOpen, onClick }) => {
     return (
         <div className="border-b border-slate-200">
@@ -52,7 +49,6 @@ const AccordionItem = ({ item, isOpen, onClick }) => {
         </div>
     );
 };
-
 
 const HowToUse = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -89,14 +85,14 @@ const HowToUse = () => {
                 <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
                     <div className="max-w-4xl mx-auto">
                         <div className="text-center mb-12">
-                             <h2 className="text-3xl font-bold text-slate-800 mb-2">Frequently Ask Question?</h2>
-                             <p className="text-slate-600"> Find your answer behind </p>
+                            <h2 className="text-3xl font-bold text-slate-800 mb-2">Need help with something?</h2>
+                            <p className="text-slate-600">Find answers to frequently asked questions below.</p>
                         </div>
-                        
+
                         <div className="mb-8">
-                             <input
+                            <input
                                 type="text"
-                                placeholder="Find Question..."
+                                placeholder="Search a question..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 className="w-full px-4 py-3 border border-slate-300 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-sky-500"
@@ -114,7 +110,7 @@ const HowToUse = () => {
                                     />
                                 ))
                             ) : (
-                                <p className="text-center text-slate-500 py-8">Tidak ada hasil yang ditemukan untuk pencarian Anda.</p>
+                                <p className="text-center text-slate-500 py-8">No results found for your search.</p>
                             )}
                         </div>
                     </div>
