@@ -1,57 +1,79 @@
 ﻿# Capstone Project
+<img width="2944" height="1664" alt="Desain tanpa judul (1)" src="https://github.com/user-attachments/assets/b4fd7390-91cf-41c3-93d8-cdfee19f7cb8" />
 
-# Repositori Hasil Coba-Coba 🧪
+> **Status:** 🚧 In Development & Planning Phase 🚧
 
-Selamat datang di repositori `hasilcobacoba` saya! 👋
+Welcome to the repository for our capstone project! This project aims to build a modern, professional task management website inspired by industry leaders like **ClickUp, Trello, and Monday.com**.
 
-Repositori ini adalah semacam 'playground' atau 'laboratorium' digital tempat saya menyimpan berbagai macam eksperimen kode, proyek iseng, catatan belajar, dan hasil eksplorasi saya di dunia pemrograman.
+Our unique vision is to create a platform that not only manages tasks but also visualizes and rewards user contributions.
 
----
+***
 
-## 🎯 Tujuan Repositori
+## 🎯 Project Goals & Vision
 
-Tujuan utama dari repositori ini adalah:
-* **📝 Dokumentasi Pribadi:** Sebagai catatan perjalanan belajar dan arsip proyek-proyek kecil.
-* **💡 Eksplorasi Ide:** Tempat untuk menguji ide-ide baru, algoritma, atau teknologi tanpa harus membuat repositori baru setiap saat.
-* **🚀 Belajar & Bertumbuh:** Sebagai bukti nyata dari proses belajar dan perkembangan skill pemrograman saya.
+The primary goals for this platform are:
+* **📝 Enhanced User Profiles:** Create dynamic user profiles that display contribution levels and progress on projects using colorful banners and tags.
+* **💡 Gamification & Recognition:** Implement a system to award digital certificates to the top contributors of a completed project, fostering motivation and engagement.
+* **🚀 Intuitive Workflow Management:** Deliver a seamless and intuitive user experience for managing projects, from individual tasks to team-wide schedules.
+* **🎨 Clean & Bright UI:** Design a simple, colorful, and bright user interface with a clean white background to ensure clarity and ease of use.
 
----
+## ✨ Key Features
 
-## 📂 Isi Repositori
+* **Comprehensive Dashboard:** A central hub for performance recaps (daily/monthly) with simple charts and progress visualizations.
+* **Kanban Boards:** Classic `To Do`, `Ongoing`, `Done`, and `Stuck` sections with color-coded tasks and one-click navigation.
+* **Google Calendar Integration:** A schedule page featuring a calendar that syncs directly with the user's Google Calendar.
+* **Team Inbox:** A built-in messaging system for users to communicate within their project groups.
+* **Google/Facebook Authentication:** Easy and secure login/signup using Google or Facebook accounts via OAuth.
+* **Customizable Experience:** Includes features like a dark mode toggle and theme customization options.
 
-Karena ini adalah kumpulan dari berbagai macam percobaan, isinya mungkin tidak saling berhubungan. Berikut adalah gambaran singkat tentang beberapa hal yang mungkin Anda temukan di dalamnya (silakan sesuaikan daftar ini):
+## 🗺️ Sitemap & Components
 
-* **`📁 /nama-folder-1`** - Deskripsi singkat tentang apa isi folder ini. Contoh: "Kumpulan script Python untuk otomatisasi tugas sehari-hari."
-* **`📁 /proyek-visualisasi-data`** - Deskripsi singkat. Contoh: "Mencoba membuat plot interaktif menggunakan D3.js."
-* **`📄 /latihan-algoritma.js`** - Penjelasan singkat. Contoh: "Implementasi beberapa soal dari LeetCode untuk latihan."
-* **`📄 /catatan-belajar-docker.md`** - Penjelasan singkat. Contoh: "Catatan ringkas tentang perintah-perintah dasar Docker."
+### Core Pages
+1.  **Landing Page:** Features a clean header, project overview, "About Us," and contact information in the footer.
+2.  **Login Page:** Allows users to log in with their credentials or via Google/Facebook Auth.
+3.  **Sign-Up Page:** New user registration, with data stored in MongoDB.
+4.  **Main Dashboard:** The central workspace for all users after logging in.
 
-> **Catatan**: Jangan ragu untuk menjelajahi setiap folder untuk melihat kode di dalamnya!
+### Dashboard Components
+The main dashboard will be built around a hover-activated pop-up sidebar containing the following:
+* **User Profile:** Displays the user's image, name, and job title. Clicking it reveals a more detailed pop-up.
+* **My Projects:** Navigates to a view of all projects connected to the user's schedule.
+* **Inbox:** Opens the team/group chat interface.
+* **Board (Bounty Board):** Shows a master list of all project titles and task descriptions assigned to the user.
+* **Schedule:** Opens the integrated Google Calendar view.
+* **Project View:** The main Kanban board interface for managing tasks.
+* **Settings:** Access to Terms of Service, dark mode, theme customization, etc.
+* **FAQ:** A page for frequently asked questions.
 
----
+## 📂 Repository Contents
 
-## 💻 Tumpukan Teknologi (Tech Stack)
+This repository contains all the source code, assets, and documentation for the project. The structure is organized as follows:
 
-Proyek-proyek di sini dibuat menggunakan berbagai teknologi, tergantung pada apa yang sedang saya pelajari atau coba. Beberapa di antaranya adalah:
+* **`/client`**: Contains all the front-end code (e.g., React/Vue/Svelte components, CSS).
+* **`/server`**: Contains all the back-end code (e.g., Node.js API, database models, authentication logic).
+* **`/docs`**: Contains project planning documents, diagrams, and other documentation.
+* **`/assets`**: Contains static assets like images, logos, and fonts.
 
-* Python
-* JavaScript
-* HTML & CSS
-* Node.js
-* (Tambahkan atau hapus teknologi lain yang Anda gunakan)
+*(You can adjust this section as you build out your project structure.)*
 
----
+## 💻 Tech Stack
 
-## 👤 Kontak
+This project is being built using the following technologies:
 
-Jika Anda punya pertanyaan atau hanya ingin menyapa, temukan saya di:
+* **Front-End:** JavaScript, Tailwind CSS, Chart.js, (Potentially React or Vue.js)
+* **Back-End:** Node.js, Express.js
+* **Database:** MongoDB
+* **Authentication:** Passport.js with Google OAuth 2.0
+* **Tools:** Git, GitHub, VS Code
 
-* **GitHub:** [@EmmAI03](https://github.com/EmmAI03)
-* **GitHub:** [@fzikrii](https://github.com/fzikrii)
-* **GitHub:** [@MannLTC19](https://github.com/MannLTC19)
-* **GitHub:** [@elmiraa89](https://github.com/elmiraa89)
+## 👥 Meet the Team
 
-Terima kasih sudah berkunjung!
+This project is a collaborative effort by:
 
+* [@EmmAI03](https://github.com/EmmAI03)
+* [@fzikrii](https://github.com/fzikrii)
+* [@MannLTC19](https://github.com/MannLTC19)
+* [@elmiraa89](https://github.com/elmiraa89)
 
+Feel free to reach out if you have any questions. Thank you for visiting!
 
