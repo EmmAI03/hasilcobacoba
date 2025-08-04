@@ -47,7 +47,7 @@ Proyek-proyek di sini dibuat menggunakan berbagai teknologi, tergantung pada apa
 Jika Anda punya pertanyaan atau hanya ingin menyapa, temukan saya di:
 
 * **GitHub:** [@EmmAI03](https://github.com/EmmAI03)
-* **(Opsional) LinkedIn:** [Nama Anda](https://linkedin.com/in/username-anda)
-* **(Opsional) Email:** nama.anda@email.com
+* **GitHub:** [@fzikrii](https://github.com/fzikrii)
 
 Terima kasih sudah berkunjung!
+
