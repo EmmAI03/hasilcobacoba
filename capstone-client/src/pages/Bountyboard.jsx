@@ -1,6 +1,4 @@
 import React, { useState, useMemo, useEffect } from 'react';
-
-// In a real project, these would be separate imports.
 import Sidebar from '../components/Sidebar';
 import Icon from '../components/Icon';
 
