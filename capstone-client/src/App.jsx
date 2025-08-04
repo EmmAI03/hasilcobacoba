@@ -55,6 +55,7 @@ function App() {
       <Route path="/settings" element={<Settings />} />
       <Route path="/loading" element={<LoadingPage isFading={false} />} />
       <Route path="/myprojects" element={<Myprojects />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 }
