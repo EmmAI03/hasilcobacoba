@@ -12,6 +12,7 @@ import Settings from './pages/Settings';
 import LoadingPage from './pages/Loadingpages';
 import Dashboard from './pages/Dashboard';
 import Myprojects from './pages/Myprojects';
+import Profile from './pages/Profile';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -54,6 +55,7 @@ function App() {
       <Route path="/settings" element={<Settings />} />
       <Route path="/loading" element={<LoadingPage isFading={false} />} />
       <Route path="/Myprojects" element={<Myprojects />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 }
