@@ -5,6 +5,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import passport from "./config/passport.js";
 import userRouter from "./routes/user.js";
+import projectRouter from "./routes/project.js";
 
 dotenv.config();
 
@@ -33,7 +34,7 @@ app.use((req, res, next) => {
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGODB_CONNECTION_STRING, {
+  .connect(process.env.MONGODB_URI, {
     dbName: process.env.DATABASE_NAME,
   })
   .then(() => console.log("MongoDB connected"))
@@ -44,6 +45,7 @@ mongoose
 
 // Routes
 app.use("/auth", userRouter); // <-- your login/signup
+app.use("/project", projectRouter); // <-- your project management
 
 // Root endpoint
 app.get("/", (req, res) => {
