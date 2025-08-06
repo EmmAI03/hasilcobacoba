@@ -12,7 +12,7 @@ const ProductivityChart = () => {
             data: {
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu'],
                 datasets: [{
-                    label: 'Doned Tasks',
+                    label: 'Donede Tasks',
                     data: [12, 19, 25, 22, 30, 28, 35, 40],
                     borderColor: '#0ea5e9',
                     backgroundColor: 'rgba(14, 165, 233, 0.1)',
