@@ -120,12 +120,12 @@ const MainContent = ({ onToggleSidebar }) => {
     return (
         <>
             <main className="flex-1 h-full overflow-y-auto">
-                <header className="bg-white/80 backdrop-blur-sm sticky top-0 z-10 p-4 border-b border-slate-200 flex items-center justify-between">
+                <header className="p-4 border-b border-slate-200 flex items-center justify-between sticky top-0 z-10" style={{ backgroundColor: '#0B1C47' }}>
                     <div className="flex items-center gap-4">
-                        <button onClick={onToggleSidebar} className="lg:hidden p-2 rounded-md hover:bg-slate-200">
-                            <Icon name="menu" className="w-6 h-6" />
+                        <button onClick={onToggleSidebar} className="lg:hidden p-2 rounded-md hover:bg-slate-100/10">
+                            <Icon name="menu" className="w-6 h-6 text-white" />
                         </button>
-                        <h1 className="text-2xl font-bold text-slate-800">Dashboard</h1>
+                        <h1 className="text-2xl text-white font-bold">Dashboard</h1>
                     </div>
                 </header>
 

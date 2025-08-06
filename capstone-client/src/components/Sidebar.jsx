@@ -34,7 +34,7 @@ const Sidebar = ({ isOpen }) => {
                 {/* === BLOK YANG DIUBAH === */}
                 <div className="p-4 border-b border-slate-200">
                     <Link to="/dashboard" className="flex items-center justify-center py-1">
-                        <img src="/logo.png" alt="Eagle Eye Logo" className="h-8" />
+                        <img src="/logo.png" alt="Eagle Eye Logo" className="h-6" />
                     </Link>
                 </div>
                 {/* === AKHIR BLOK YANG DIUBAH === */}
@@ -61,10 +61,20 @@ const Sidebar = ({ isOpen }) => {
                     {navLinks.map(link => {
                         const isActive = location.pathname === link.path;
                         return (
-                            <Link key={link.name} to={link.path} className={`sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-white hover:bg-slate-100/10 transition-colors ${isActive ? 'active font-bold' : ''}`}>
-                                <Icon name={link.icon} className={`w-5 h-5 ${isActive ? 'text-white' : 'text-white/70'}`} />
+                            <Link
+                                key={link.name}
+                                to={link.path}
+                                className={`sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-white transition-colors
+                                    ${isActive ? 'font-bold' : ''}
+                                    ${isActive ? 'bg-[#173A7A]' : 'hover:bg-slate-100/10'}`}
+                            >
+                                <Icon name={link.icon} className="w-5 h-5 text-white" />
                                 <span>{link.name}</span>
-                                {link.notification && <span className="ml-auto bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">{link.notification}</span>}
+                                {link.notification && (
+                                    <span className="ml-auto bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                                        {link.notification}
+                                    </span>
+                                )}
                             </Link>
                         );
                     })}

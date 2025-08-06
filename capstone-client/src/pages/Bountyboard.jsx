@@ -71,56 +71,46 @@ const App = () => {
     }, [bounties, searchTerm]);
 
     return (
-        <div className="flex bg-white font-sans text-slate-800">
-            <style>{`
-                @keyframes modal-in {
-                    from { opacity: 0; transform: scale(0.95); }
-                    to { opacity: 1; transform: scale(1); }
-                }
-                .animate-modal-in { animation: modal-in 0.2s ease-out forwards; }
-            `}</style>
-            
+        <div className="flex h-screen min-h-screen bg-slate-50 font-sans text-slate-800">
             <Sidebar isOpen={isSidebarOpen} />
-            
-           <div className="flex-1 flex flex-col">
-            <header className="bg-white/80 backdrop-blur-sm sticky top-0 z-20 p-4 border-b border-slate-200 flex items-center justify-between">
+            <div className="flex-1 flex flex-col">
+                <header
+                    className="sticky top-0 z-20 min-h-[65px] flex items-center justify-between px-4 border-b border-slate-200"
+                    style={{ backgroundColor: '#0B1C47' }}
+                >
                     <div className="flex items-center gap-4">
-                        <button onClick={toggleSidebar} className="lg:hidden p-2 rounded-md hover:bg-slate-200">
-                            <Icon name="menu" className="w-6 h-6" />
+                        <button onClick={toggleSidebar} className="lg:hidden p-2 rounded-md hover:bg-slate-100/10">
+                            <Icon name="menu" className="w-6 h-6 text-white" />
                         </button>
-                        <h1 className="text-2xl font-bold text-slate-800">Bounty Board</h1>
+                        <h1 className="text-2xl font-bold text-white">Bounty Board</h1>
                     </div>
-            </header>
+                </header>
+                <main className="flex-1 overflow-y-auto bg-slate-50 p-4 sm:p-6 lg:p-12">
+                    <div className="text-center mb-12">
+                        <h1 className="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">Bounty Board</h1>
+                        <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+                            Discover exciting projects, complete tasks, and earn rewards. Begin your coding adventure here!
+                        </p>
+                    </div>
 
-            <main className="flex-1 overflow-y-auto bg-slate-50 p-4 sm:p-6 lg:p-12">
-                <div className="text-center mb-12">
-                    <h1 className="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">Bounty Board</h1>
-                    <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-                        Discover exciting projects, complete tasks, and earn rewards. Begin your coding adventure here!
-                    </p>
-                </div>
+                    <div className="mb-12 max-w-2xl mx-auto">
+                        <input
+                            type="text"
+                            placeholder="Search bounties..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full px-5 py-3 border border-slate-300 rounded-full text-base bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-shadow"
+                        />
+                    </div>
 
-                <div className="mb-12 max-w-2xl mx-auto">
-                    <input
-                        type="text"
-                        placeholder="Search bounties..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full px-5 py-3 border border-slate-300 rounded-full text-base bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-shadow"
-                    />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                    {filteredBounties.map(bounty => (
-                        <BountyCard key={bounty.id} bounty={bounty} onSelectBounty={setSelectedBounty} />
-                    ))}
-                </div>
-            </main>
-        </div>
-
-
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                        {filteredBounties.map(bounty => (
+                            <BountyCard key={bounty.id} bounty={bounty} onSelectBounty={setSelectedBounty} />
+                        ))}
+                    </div>
+                </main>
+            </div>
             {isSidebarOpen && <div onClick={toggleSidebar} className="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden"></div>}
-
             <Modal isOpen={!!selectedBounty} onClose={() => setSelectedBounty(null)}>
                 {selectedBounty && (
                     <div>
