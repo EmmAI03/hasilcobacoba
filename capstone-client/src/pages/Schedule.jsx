@@ -1,10 +1,7 @@
 import React, { useState, useMemo } from 'react';
-
-// Make sure you have these components in your project
 import Sidebar from '../components/Sidebar';
 import Icon from '../components/Icon';
 
-// --- Initial Schedule Data ---
 const initialEvents = {
     '2025-08-01': [{ id: 1, title: 'API Key Issue', color: 'bg-rose-500', time: '10:00' }],
     '2025-08-03': [{ id: 2, title: 'Develop Homepage', color: 'bg-amber-500', time: '14:00' }],
